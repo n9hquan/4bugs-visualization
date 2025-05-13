@@ -67,7 +67,7 @@ ax.set_ylim(0, s)
 ax.grid(True)
 ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
-ax.set_title('Three Bugs Approaching Stationary Bug 4')
+ax.set_title('Trajectories of Three Bugs Approaching Stationary Bug 4')
 
 # Initialize empty plot elements for each bug
 line1, = ax.plot([], [], 'r-')

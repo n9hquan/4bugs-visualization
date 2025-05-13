@@ -44,7 +44,7 @@ ax.set_ylim(-s, s)
 ax.grid(True)
 ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
-ax.set_title('Looping Trajectories of the Four Bugs')
+ax.set_title('Trajectories of the Four Bugs')
 
 
 # Initialize empty plot elements for each bug
