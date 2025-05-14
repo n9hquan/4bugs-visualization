@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+import matplotlib.image as mpimg
 
 # Define the parameters
 s = 1.0  # size of the square
@@ -69,15 +71,32 @@ ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
 ax.set_title('Trajectories of Three Bugs Approaching Stationary Bug 4')
 
+bull_image = mpimg.imread('red-bull.png')  # Make sure this image exists in the same directory or provide full path
+bull1_icon = OffsetImage(bull_image, zoom=0.05)  # Adjust zoom to size the image
+bull1_abox = AnnotationBbox(bull1_icon, (0, 0), frameon=False)
+ax.add_artist(bull1_abox)
+
+bull2_icon = OffsetImage(bull_image, zoom=0.05)  # Adjust zoom to size the image
+bull2_abox = AnnotationBbox(bull2_icon, (0, 0), frameon=False)
+ax.add_artist(bull2_abox)
+
+bull3_icon = OffsetImage(bull_image, zoom=0.05)  # Adjust zoom to size the image
+bull3_abox = AnnotationBbox(bull3_icon, (0, 0), frameon=False)
+ax.add_artist(bull3_abox)
+
+bull4_icon = OffsetImage(bull_image, zoom=0.05)  # Adjust zoom to size the image
+bull4_abox = AnnotationBbox(bull4_icon, (0, 0), frameon=False)
+ax.add_artist(bull4_abox)
+
 # Initialize empty plot elements for each bug
 line1, = ax.plot([], [], 'r-')
 line2, = ax.plot([], [], 'g-')
 line3, = ax.plot([], [], 'b-')
 
-point1, = ax.plot([], [], 'ro', markersize=8, label='Bug 1')
-point2, = ax.plot([], [], 'go', markersize=8, label='Bug 2')
-point3, = ax.plot([], [], 'bo', markersize=8, label='Bug 3')
-point4, = ax.plot(x0, y0, 'ko', markersize=8, label='Bug 4')
+# point1, = ax.plot([], [], 'ro', markersize=8, label='Bug 1')
+# point2, = ax.plot([], [], 'go', markersize=8, label='Bug 2')
+# point3, = ax.plot([], [], 'bo', markersize=8, label='Bug 3')
+# point4, = ax.plot(x0, y0, 'ko', markersize=8, label='Bug 4')
 plt.plot(x0, y0)
 ax.legend()
 
@@ -86,19 +105,21 @@ def animate(i):
     x1_data = bug1_x(t[:i+1])
     y1_data = bug1_y(t[:i+1])
     line1.set_data(x1_data, y1_data)
-    point1.set_data(x1_data[-1:], y1_data[-1:])
+    bull1_abox.xybox = (x1_data[-1], y1_data[-1])
 
     x2_data = bug2_x(t[:i+1])
     y2_data = bug2_y(t[:i+1])
     line2.set_data(x2_data, y2_data)
-    point2.set_data(x2_data[-1:], y2_data[-1:])
+    bull2_abox.xybox = (x2_data[-1], y2_data[-1])
 
     x3_data = bug3_x(t[:i+1])
     y3_data = bug3_y(t[:i+1])
     line3.set_data(x3_data, y3_data)
-    point3.set_data(x3_data[-1:], y3_data[-1:])
+    bull3_abox.xybox = (x3_data[-1], y3_data[-1])
+    
+    bull4_abox.xybox = (x0, y0)
 
-    return line1, line2, line3, point1, point2, point3, point4
+    return line1, line2, line3, bull1_abox, bull2_abox, bull3_abox, bull4_abox
 
 # Create the animation
 ani = FuncAnimation(fig, animate, frames=frames, interval=50, blit=True, repeat=True)
