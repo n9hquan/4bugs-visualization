@@ -62,8 +62,8 @@ def bug3_y(t):
 # Create the figure and axes
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.set_aspect('equal', adjustable='box')
-ax.set_xlim(0, s)
-ax.set_ylim(0, s)
+ax.set_xlim(0, max(s, max(x0, y0)))
+ax.set_ylim(0, max(s, max(x0, y0)))
 ax.grid(True)
 ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
