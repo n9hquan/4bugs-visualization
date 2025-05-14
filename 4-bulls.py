@@ -43,7 +43,7 @@ ax.set_ylim(-s, s)
 ax.grid(True)
 ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
-ax.set_title('Trajectories of the Four bulls')
+ax.set_title('Trajectories of four bulls')
 
 bull_image = mpimg.imread('red-bull.png')  
 bull1_icon = OffsetImage(bull_image, zoom=0.05)  

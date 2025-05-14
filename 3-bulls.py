@@ -67,7 +67,7 @@ ax.set_ylim(0, max(s, max(x0, y0)))
 ax.grid(True)
 ax.set_xlabel('x(t)')
 ax.set_ylabel('y(t)')
-ax.set_title('Trajectories of Three bulls Approaching Stationary bull 4')
+ax.set_title('Trajectories of three bulls approaching stationary bull 4')
 
 bull_image = mpimg.imread('red-bull.png')  
 bull1_icon = OffsetImage(bull_image, zoom=0.05)  
